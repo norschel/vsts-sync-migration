@@ -39,6 +39,15 @@ namespace VstsSyncMigrator.ConsoleApp
             public string ConfigFile { get; set; }
         }
 
+        [Verb("exportnodestructures", HelpText = "Exports all of the Area and Iteration Paths to json")]
+        class ExportNodeStructuresOptions
+        {
+            [Option('c', "collection", Required = true, HelpText = "The collection to connet to.")]
+            public string collection { get; set; }
+            [Option('t', "teamproject", Required = true, HelpText = "The team project to use.")]
+            public string teamproject { get; set; }
+        }
+
         public static int Main(string[] args)
         {
             Telemetry.Current.TrackEvent("ApplicationStart");
@@ -63,6 +72,7 @@ namespace VstsSyncMigrator.ConsoleApp
             int result = (int)Parser.Default.ParseArguments<InitOptions, RunOptions>(args).MapResult(
                 (InitOptions opts) => RunInitAndReturnExitCode(opts),
                 (RunOptions opts) => RunExecuteAndReturnExitCode(opts),
+                (ExportNodeStructuresOptions opts) => RunExportNodeStructures(opts),
                 errs => 1);
             //////////////////////////////////////////////////
             Trace.WriteLine("----------------------------------------------------------------", "vstsbulkeditor");
@@ -85,6 +95,15 @@ namespace VstsSyncMigrator.ConsoleApp
             Console.ReadKey();
 #endif
             return result;
+        }
+
+        private static int RunExportNodeStructures(ExportNodeStructuresOptions opts)
+        {
+            // Create multi-threaded classes to do both export and import to any repository
+            //1. Create TFS/VSTS NodeStructure Repo - read and write with events and threading
+            //2. Create internal Storage Repository for both read and write | file & memory
+
+            throw new NotImplementedException();
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
