@@ -15,20 +15,26 @@ namespace VstsSyncMigrator.Vsts
     public class TeamFoundationTeamRepository : IRepository<Team>
     {
         TeamProject teamProject;
+        CollectionContext sourceCollection;
+        TfsTeamService teamService;
 
         public TeamFoundationTeamRepository(TeamProject teamProject)
         {
             this.teamProject = teamProject;
+            sourceCollection = new CollectionContext(teamProject);
+            teamService = sourceCollection.Collection.GetService<TfsTeamService>();
         }
 
         public Team Add(Team entity)
         {
-            throw new NotImplementedException();
+            TeamFoundationTeam newTeam = teamService.CreateTeam(sourceCollection.GetProjectId(), entity.Name, entity.Description, null);
+            return ConvertTeamFoundationTeamToTeam(newTeam);
         }
 
         public bool Delete(Team entity)
         {
-            throw new NotImplementedException();
+            
+            return false;
         }
 
         public Team Get(Expression<Func<Team, bool>> filter)
@@ -39,21 +45,56 @@ namespace VstsSyncMigrator.Vsts
         public ICollection<Team> GetAll()
         {
             ICollection<Team> localTeams = new Collection<Team>();
-            CollectionContext sourceCollection = new CollectionContext(teamProject);
-            WorkItemStoreContext sourceStore = new WorkItemStoreContext(sourceCollection, WorkItemStoreFlags.BypassRules);
-            TfsTeamService sourceTS = sourceCollection.Collection.GetService<TfsTeamService>();
-            List<TeamFoundationTeam> remoteTeams = sourceTS.QueryTeams(teamProject.Name).ToList();
+            List<TeamFoundationTeam> remoteTeams = teamService.QueryTeams(teamProject.Name).ToList();
             foreach (TeamFoundationTeam team in remoteTeams)
             {
-                localTeams.Add(new Team {Name = team.Name, Project = team.Project, Description = team.Description });
+                localTeams.Add(ConvertTeamFoundationTeamToTeam(team));
+                //var sourceTSCS = me.Source.Collection.GetService<TeamSettingsConfigurationService>();
             }
-
             return localTeams;
         }
 
         public bool Update(Team entity)
         {
-            throw new NotImplementedException();
+            return false;
+        }
+
+        private Team ConvertTeamFoundationTeamToTeam(TeamFoundationTeam TfsTeam)
+        {
+            return new Team { Name = TfsTeam.Name, Project = TfsTeam.Project, Description = TfsTeam.Description };
         }
     }
 }
+
+
+
+// Set Team Settings
+//foreach (TeamFoundationTeam sourceTeam in sourceTL)
+//{
+//    Stopwatch witstopwatch = new Stopwatch();
+//    witstopwatch.Start();
+//    var foundTargetTeam = (from x in targetTL where x.Name == sourceTeam.Name select x).SingleOrDefault();
+//    if (foundTargetTeam == null)
+//    {
+//        Trace.WriteLine(string.Format("Processing team {0}", sourceTeam.Name));
+//        var sourceTCfU = sourceTSCS.GetTeamConfigurations((new[] { sourceTeam.Identity.TeamFoundationId })).SingleOrDefault();
+//        TeamSettings newTeamSettings = CreateTargetTeamSettings(sourceTCfU);
+//        TeamFoundationTeam newTeam = targetTS.CreateTeam(targetProject.Uri.ToString(), sourceTeam.Name, sourceTeam.Description, null);
+//        targetTSCS.SetTeamSettings(newTeam.Identity.TeamFoundationId, newTeamSettings);
+//    }
+//    else
+//    {
+//        Trace.WriteLine(string.Format("Team found.. skipping"));
+//    }
+
+//    witstopwatch.Stop();
+//    elapsedms = elapsedms + witstopwatch.ElapsedMilliseconds;
+//    current--;
+//    count++;
+//    TimeSpan average = new TimeSpan(0, 0, 0, 0, (int)(elapsedms / count));
+//    TimeSpan remaining = new TimeSpan(0, 0, 0, 0, (int)(average.TotalMilliseconds * current));
+//    Trace.WriteLine("");
+//    //Trace.WriteLine(string.Format("Average time of {0} per work item and {1} estimated to completion", string.Format(@"{0:s\:fff} seconds", average), string.Format(@"{0:%h} hours {0:%m} minutes {0:s\:fff} seconds", remaining)));
+
+//}
+//////////////////////////////////////////////////

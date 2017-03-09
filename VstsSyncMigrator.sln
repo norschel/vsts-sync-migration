@@ -71,10 +71,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VstsSyncMigrator.Adapters.V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VstsSyncMigrator.Adapters.Vsts.Tests", "src\VstsSyncMigrator.Vsts.Tests\VstsSyncMigrator.Adapters.Vsts.Tests.csproj", "{9786267B-740A-4A04-A972-3786D7A72F7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VstsSyncMigrator.Core2", "src\VstsSyncMigrator.Core2\VstsSyncMigrator.Core2.csproj", "{C14686E0-38C0-40AA-AB11-04FAD666B459}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VstsSyncMigrator.Core2.Tests", "src\VstsSyncMigrator.Core2.Tests\VstsSyncMigrator.Core2.Tests.csproj", "{430EE94E-B478-4647-AC12-1798CB064CAB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,14 +109,6 @@ Global
 		{9786267B-740A-4A04-A972-3786D7A72F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9786267B-740A-4A04-A972-3786D7A72F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9786267B-740A-4A04-A972-3786D7A72F7A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C14686E0-38C0-40AA-AB11-04FAD666B459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C14686E0-38C0-40AA-AB11-04FAD666B459}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C14686E0-38C0-40AA-AB11-04FAD666B459}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C14686E0-38C0-40AA-AB11-04FAD666B459}.Release|Any CPU.Build.0 = Release|Any CPU
-		{430EE94E-B478-4647-AC12-1798CB064CAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{430EE94E-B478-4647-AC12-1798CB064CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{430EE94E-B478-4647-AC12-1798CB064CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{430EE94E-B478-4647-AC12-1798CB064CAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,8 +126,6 @@ Global
 		{90D8E7EF-7BD5-4802-98F9-02D6D17E0F04} = {A564298E-D616-40B7-84A4-4F309BE0730F}
 		{0458D700-603C-4CB0-9022-3506E0D724B1} = {A564298E-D616-40B7-84A4-4F309BE0730F}
 		{9786267B-740A-4A04-A972-3786D7A72F7A} = {A564298E-D616-40B7-84A4-4F309BE0730F}
-		{C14686E0-38C0-40AA-AB11-04FAD666B459} = {A564298E-D616-40B7-84A4-4F309BE0730F}
-		{430EE94E-B478-4647-AC12-1798CB064CAB} = {A564298E-D616-40B7-84A4-4F309BE0730F}
 	EndGlobalSection
 	GlobalSection(CodealikeProperties) = postSolution
 		SolutionGuid = 51c92075-0694-476b-8366-efd65c9a9b77

@@ -5,6 +5,10 @@ using Microsoft.TeamFoundation;
 using Microsoft.ApplicationInsights;
 using System.Collections.Generic;
 using VstsSyncMigrator.DataContracts;
+using System.Collections.ObjectModel;
+using Microsoft.TeamFoundation.Framework.Client;
+using Microsoft.TeamFoundation.Framework.Common;
+using System.Linq;
 
 namespace VstsSyncMigrator.Vsts.Contexts
 {
@@ -30,9 +34,28 @@ namespace VstsSyncMigrator.Vsts.Contexts
             }
         }
 
+        public Uri CollectionURL
+        {
+            get
+            {
+                return _teamProject.CollectionUrl;
+            }
+        }
+
         public CollectionContext(TeamProject teamProject)
         {
             this._teamProject = teamProject;
+        }
+
+        public string GetProjectId()
+        {
+            // Get a catalog of team projects for the collection
+            ReadOnlyCollection<CatalogNode> projectNodes = 
+                Collection.CatalogNode.QueryChildren(
+                    new[] { CatalogResourceTypes.TeamProject },
+                    false, 
+                    CatalogQueryOptions.None);
+            return (from CatalogNode pn in projectNodes where pn.Resource.DisplayName == Name select pn.Resource.Identifier.ToString()).SingleOrDefault();
         }
 
         public void Connect()
