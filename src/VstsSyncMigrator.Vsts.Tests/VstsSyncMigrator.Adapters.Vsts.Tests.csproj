@@ -202,9 +202,9 @@
       <Project>{68baf6ba-2bc0-48d0-b892-1d9f93d7003a}</Project>
       <Name>VstsSyncMigrator.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VstsSyncMigrator.Vsts\VstsSyncMigrator.Vsts.csproj">
+    <ProjectReference Include="..\VstsSyncMigrator.Vsts\VstsSyncMigrator.Adapters.Vsts.csproj">
       <Project>{0458d700-603c-4cb0-9022-3506e0d724b1}</Project>
-      <Name>VstsSyncMigrator.Vsts</Name>
+      <Name>VstsSyncMigrator.Adapters.Vsts</Name>
     </ProjectReference>
     <ProjectReference Include="..\VstsSyncMigrator\VstsSyncMigrator.csproj">
       <Project>{93c8484d-f219-42d3-a3bf-eb3df4c92397}</Project>

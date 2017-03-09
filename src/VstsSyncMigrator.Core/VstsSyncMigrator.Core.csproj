@@ -313,13 +313,13 @@
     <Folder Include="Configuration\WorkItemTypes\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VstsSyncMigrator.Store\VstsSyncMigrator.Store.csproj">
+    <ProjectReference Include="..\VstsSyncMigrator.Store\VstsSyncMigrator.Store.Json.csproj">
       <Project>{90d8e7ef-7bd5-4802-98f9-02d6d17e0f04}</Project>
-      <Name>VstsSyncMigrator.Store</Name>
+      <Name>VstsSyncMigrator.Store.Json</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VstsSyncMigrator.Vsts\VstsSyncMigrator.Vsts.csproj">
+    <ProjectReference Include="..\VstsSyncMigrator.Vsts\VstsSyncMigrator.Adapters.Vsts.csproj">
       <Project>{0458d700-603c-4cb0-9022-3506e0d724b1}</Project>
-      <Name>VstsSyncMigrator.Vsts</Name>
+      <Name>VstsSyncMigrator.Adapters.Vsts</Name>
     </ProjectReference>
     <ProjectReference Include="..\VstsSyncMigrator\VstsSyncMigrator.csproj">
       <Project>{93c8484d-f219-42d3-a3bf-eb3df4c92397}</Project>
