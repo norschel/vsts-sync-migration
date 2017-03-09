@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="DataContracts\Team.cs" />
     <Compile Include="DataContracts\TeamProject.cs" />
+    <Compile Include="DataContracts\WorkItemData.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Telemetry.cs" />

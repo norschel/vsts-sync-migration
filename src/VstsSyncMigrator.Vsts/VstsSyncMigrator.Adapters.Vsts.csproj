@@ -210,6 +210,7 @@
     <Compile Include="Contexts\TfsQueryContext.cs" />
     <Compile Include="Contexts\WorkItemStoreContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\WorkItemRepository.cs" />
     <Compile Include="Repositories\TeamFoundationTeamRepository.cs" />
   </ItemGroup>
   <ItemGroup>
