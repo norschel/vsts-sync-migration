@@ -5,20 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using VstsSyncMigrator.Engine;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
 using System.Collections.ObjectModel;
 using VstsSyncMigrator.DataContracts;
 
-namespace VstsSyncMigrator.Vsts.Teams
+namespace VstsSyncMigrator.Vsts
 {
     public class TeamFoundationTeamRepository : IRepository<Team>
     {
-        ITeamProjectContext teamProjectContext;
+        TeamProject teamProject;
 
-        public TeamFoundationTeamRepository(ITeamProjectContext teamProjectContext)
+        public TeamFoundationTeamRepository(TeamProject teamProject)
         {
-            this.teamProjectContext = teamProjectContext;
+            this.teamProject = teamProject;
         }
 
         public Team Add(Team entity)
@@ -39,9 +38,10 @@ namespace VstsSyncMigrator.Vsts.Teams
         public ICollection<Team> GetAll()
         {
             ICollection<Team> localTeams = new Collection<Team>();
-            WorkItemStoreContext sourceStore = new WorkItemStoreContext(teamProjectContext, WorkItemStoreFlags.BypassRules);
-            TfsTeamService sourceTS = teamProjectContext.Collection.GetService<TfsTeamService>();
-            List<TeamFoundationTeam> remoteTeams = sourceTS.QueryTeams(teamProjectContext.Name).ToList();
+            CollectionContext sourceCollection = new CollectionContext(teamProject);
+            WorkItemStoreContext sourceStore = new WorkItemStoreContext(sourceCollection, WorkItemStoreFlags.BypassRules);
+            TfsTeamService sourceTS = sourceCollection.Collection.GetService<TfsTeamService>();
+            List<TeamFoundationTeam> remoteTeams = sourceTS.QueryTeams(teamProject.Name).ToList();
             foreach (TeamFoundationTeam team in remoteTeams)
             {
                 localTeams.Add(new Team {Name = team.Name, Project = team.Project, Description = team.Description });

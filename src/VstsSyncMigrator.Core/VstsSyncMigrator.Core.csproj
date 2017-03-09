@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VstsSyncMigrator.Core</RootNamespace>
     <AssemblyName>VstsSyncMigrator.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -310,7 +311,6 @@
     <Compile Include="Execution\MigrationContext\MigrationContextBase.cs" />
     <Compile Include="Execution\MigrationContext\AttachementMigrationContextBase.cs" />
     <Compile Include="Execution\MigrationContext\AttachementImportMigrationContext.cs" />
-    <Compile Include="Execution\ComponentContext\ITeamProjectContext.cs" />
     <Compile Include="Execution\ComponentContext\IWitdMapper.cs" />
     <Compile Include="Execution\ComponentContext\DescreteWitdMapper.cs" />
     <Compile Include="Execution\MigrationContext\NodeStructuresMigrationContext.cs" />
@@ -333,14 +333,11 @@
     <Compile Include="Execution\ProcessingContext\WorkItemUpdate.cs" />
     <Compile Include="Execution\ProcessingContext\WorkItemUpdateAreasAsTagsContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Execution\ComponentContext\TeamProjectContext.cs" />
     <Compile Include="Execution\ComponentContext\TfsQueryContext.cs" />
     <Compile Include="Execution\MigrationContext\WorkItemMigrationContext.cs" />
-    <Compile Include="Execution\ComponentContext\WorkItemStoreContext.cs" />
     <Compile Include="Execution\MigrationContext\TestPlansAndSuitsMigrationContext.cs" />
     <Compile Include="Execution\FieldMaps\RegexFieldMap.cs" />
     <Compile Include="Execution\FieldMaps\TreeToTagFieldMap.cs" />
-    <Compile Include="Telemetry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -353,6 +350,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configuration\WorkItemTypes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VstsSyncMigrator.Store\VstsSyncMigrator.Store.csproj">
+      <Project>{90d8e7ef-7bd5-4802-98f9-02d6d17e0f04}</Project>
+      <Name>VstsSyncMigrator.Store</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VstsSyncMigrator.Vsts\VstsSyncMigrator.Vsts.csproj">
+      <Project>{0458d700-603c-4cb0-9022-3506e0d724b1}</Project>
+      <Name>VstsSyncMigrator.Vsts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VstsSyncMigrator\VstsSyncMigrator.csproj">
+      <Project>{93c8484d-f219-42d3-a3bf-eb3df4c92397}</Project>
+      <Name>VstsSyncMigrator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

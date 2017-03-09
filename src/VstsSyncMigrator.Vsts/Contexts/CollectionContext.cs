@@ -4,14 +4,14 @@ using System.Diagnostics;
 using Microsoft.TeamFoundation;
 using Microsoft.ApplicationInsights;
 using System.Collections.Generic;
+using VstsSyncMigrator.DataContracts;
 
-namespace VstsSyncMigrator.Engine
+namespace VstsSyncMigrator.Vsts
 {
-    public class TeamProjectContext : ITeamProjectContext
+    public class CollectionContext
     {
-        private Uri _CollectionUrl;
+        private TeamProject _teamProject;
         private TfsTeamProjectCollection _Collection;
-        private string _TeamProjectName;
 
         public TfsTeamProjectCollection Collection
         {
@@ -26,15 +26,13 @@ namespace VstsSyncMigrator.Engine
         {
             get
             {
-                return _TeamProjectName;
+                return _teamProject.Name;
             }
         }
 
-        public TeamProjectContext(Uri collectionUrl  , string teamProjectName)
+        public CollectionContext(TeamProject teamProject)
         {
-
-            this._CollectionUrl = collectionUrl;
-            this._TeamProjectName = teamProjectName;
+            this._teamProject = teamProject;
         }
 
         public void Connect()
@@ -44,7 +42,7 @@ namespace VstsSyncMigrator.Engine
                 Stopwatch connectionTimer = new Stopwatch();
                 connectionTimer.Start();
                 Trace.WriteLine("Creating TfsTeamProjectCollection Object ");
-                _Collection = new TfsTeamProjectCollection(_CollectionUrl);
+                _Collection = new TfsTeamProjectCollection(_teamProject.CollectionUrl);
                 try
                 {
                     Trace.WriteLine(string.Format("Connected to {0} ", _Collection.Uri.ToString()));
@@ -53,8 +51,8 @@ namespace VstsSyncMigrator.Engine
                     connectionTimer.Stop();
                     Telemetry.Current.TrackEvent("ConnectionEstablished",
                       new Dictionary<string, string> {
-                            { "CollectionUrl", _CollectionUrl.ToString() },
-                            { "TeamProjectName",  _TeamProjectName}
+                            { "CollectionUrl", _teamProject.CollectionUrl.ToString() },
+                            { "TeamProjectName",  _teamProject.Name}
                       },
                       new Dictionary<string, double> {
                             { "ConnectionTimer", connectionTimer.ElapsedMilliseconds }
@@ -65,8 +63,8 @@ namespace VstsSyncMigrator.Engine
                 {
                     Telemetry.Current.TrackException(ex,
                        new Dictionary<string, string> {
-                            { "CollectionUrl", _CollectionUrl.ToString() },
-                            { "TeamProjectName",  _TeamProjectName}
+                            { "CollectionUrl", _teamProject.CollectionUrl.ToString() },
+                            { "TeamProjectName",  _teamProject.Name}
                        },
                        new Dictionary<string, double> {
                             { "ConnectionTimer", connectionTimer.ElapsedMilliseconds }

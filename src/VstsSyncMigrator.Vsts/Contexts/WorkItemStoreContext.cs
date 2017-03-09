@@ -5,18 +5,18 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 
-namespace VstsSyncMigrator.Engine
+namespace VstsSyncMigrator.Vsts
 {
     public class WorkItemStoreContext
     {
         private WorkItemStoreFlags bypassRules;
-        private ITeamProjectContext targetTfs;
+        private CollectionContext targetTfs;
         private WorkItemStore wistore;
         private Dictionary<int, WorkItem> foundWis;
 
         public WorkItemStore Store { get { return wistore; }}
 
-        public WorkItemStoreContext(ITeamProjectContext targetTfs, WorkItemStoreFlags bypassRules)
+        public WorkItemStoreContext(CollectionContext targetTfs, WorkItemStoreFlags bypassRules)
         {
             var startTime = DateTime.UtcNow;
             var timer = System.Diagnostics.Stopwatch.StartNew();

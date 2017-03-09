@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VstsSyncMigrator.Engine
+namespace VstsSyncMigrator
 {
    public static class Telemetry
     {
