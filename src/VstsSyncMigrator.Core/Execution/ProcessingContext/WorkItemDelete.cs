@@ -8,6 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
 using VstsSyncMigrator.Engine.Configuration.Processing;
+using VstsSyncMigrator.Vsts;
+using VstsSyncMigrator.Vsts.Contexts;
 
 namespace VstsSyncMigrator.Engine
 {

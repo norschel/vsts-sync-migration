@@ -6,7 +6,7 @@ using Microsoft.ApplicationInsights;
 using System.Collections.Generic;
 using VstsSyncMigrator.DataContracts;
 
-namespace VstsSyncMigrator.Vsts
+namespace VstsSyncMigrator.Vsts.Contexts
 {
     public class CollectionContext
     {

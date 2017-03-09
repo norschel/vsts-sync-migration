@@ -3,8 +3,9 @@ using Microsoft.TeamFoundation.WorkItemTracking.Client;
 using System.Collections.Generic;
 using Microsoft.ApplicationInsights;
 using System.Diagnostics;
+using VstsSyncMigrator.Vsts;
 
-namespace VstsSyncMigrator.Engine
+namespace VstsSyncMigrator.Vsts.Contexts
 {
     public class TfsQueryContext
     {

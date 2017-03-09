@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
 using System.Collections.ObjectModel;
 using VstsSyncMigrator.DataContracts;
+using VstsSyncMigrator.Vsts.Contexts;
 
 namespace VstsSyncMigrator.Vsts
 {

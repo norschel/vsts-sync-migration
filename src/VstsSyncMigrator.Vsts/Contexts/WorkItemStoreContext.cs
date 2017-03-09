@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 
-namespace VstsSyncMigrator.Vsts
+namespace VstsSyncMigrator.Vsts.Contexts
 {
     public class WorkItemStoreContext
     {

@@ -9,6 +9,8 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using Microsoft.TeamFoundation.Client;
 using VstsSyncMigrator.Engine.Configuration.Processing;
+using VstsSyncMigrator.Vsts;
+using VstsSyncMigrator.Vsts.Contexts;
 
 namespace VstsSyncMigrator.Engine
 {

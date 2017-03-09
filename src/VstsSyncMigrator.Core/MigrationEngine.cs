@@ -10,6 +10,9 @@ using VstsSyncMigrator.Engine.ComponentContext;
 using VstsSyncMigrator.Engine.Configuration;
 using VstsSyncMigrator.Engine.Configuration.FieldMap;
 using VstsSyncMigrator.Engine.Configuration.Processing;
+using VstsSyncMigrator.Vsts;
+using VstsSyncMigrator.DataContracts;
+using VstsSyncMigrator.Vsts.Contexts;
 
 namespace VstsSyncMigrator.Engine
 {
@@ -19,8 +22,8 @@ namespace VstsSyncMigrator.Engine
         List<Action<WorkItem, WorkItem>> processorActions = new List<Action<WorkItem, WorkItem>>();
         Dictionary<string, List<IFieldMap>> fieldMapps = new Dictionary<string, List<IFieldMap>>();
         Dictionary<string, IWitdMapper> workItemTypeDefinitions = new Dictionary<string, IWitdMapper>();
-        ITeamProjectContext source;
-        ITeamProjectContext target;
+        CollectionContext source;
+        CollectionContext target;
         string reflectedWorkItemIdFieldName = "TfsMigrationTool.ReflectedWorkItemId";
         
         public MigrationEngine()
@@ -37,11 +40,11 @@ namespace VstsSyncMigrator.Engine
             Telemetry.EnableTrace = config.TelemetryEnableTrace;
             if (config.Source != null)
             {
-                this.SetSource(new TeamProjectContext(config.Source.Collection, config.Source.Name));
+                this.SetSource(new CollectionContext(new TeamProject(config.Source.Collection, config.Source.Name)));
             }
             if (config.Target != null)
             {
-                this.SetTarget(new TeamProjectContext(config.Target.Collection, config.Target.Name));
+                this.SetTarget(new CollectionContext(new TeamProject(config.Target.Collection, config.Target.Name)));
             }           
             this.SetReflectedWorkItemIdFieldName(config.ReflectedWorkItemIDFieldName);
             if (config.FieldMaps != null)
@@ -75,7 +78,7 @@ namespace VstsSyncMigrator.Engine
             }
         }
 
-        public ITeamProjectContext Source
+        public CollectionContext Source
         {
             get
             {
@@ -83,7 +86,7 @@ namespace VstsSyncMigrator.Engine
             }
         }
 
-        public ITeamProjectContext Target
+        public CollectionContext Target
         {
             get
             {
@@ -152,12 +155,12 @@ namespace VstsSyncMigrator.Engine
             reflectedWorkItemIdFieldName = fieldName;
         }
 
-        public void SetSource(ITeamProjectContext teamProjectContext)
+        public void SetSource(CollectionContext teamProjectContext)
         {
             source = teamProjectContext;
         }
 
-        public void SetTarget(ITeamProjectContext teamProjectContext)
+        public void SetTarget(CollectionContext teamProjectContext)
         {
             target = teamProjectContext;
         }

@@ -295,7 +295,6 @@
     <Compile Include="Execution\ProcessingContext\WorkItemUpdate.cs" />
     <Compile Include="Execution\ProcessingContext\WorkItemUpdateAreasAsTagsContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Execution\ComponentContext\TfsQueryContext.cs" />
     <Compile Include="Execution\MigrationContext\WorkItemMigrationContext.cs" />
     <Compile Include="Execution\MigrationContext\TestPlansAndSuitsMigrationContext.cs" />
     <Compile Include="Execution\FieldMaps\RegexFieldMap.cs" />

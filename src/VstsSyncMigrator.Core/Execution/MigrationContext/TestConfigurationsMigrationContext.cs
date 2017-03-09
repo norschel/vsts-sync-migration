@@ -6,6 +6,7 @@ using System.Diagnostics;
 using VstsSyncMigrator.Engine.ComponentContext;
 using System.Linq;
 using VstsSyncMigrator.Engine.Configuration.Processing;
+using VstsSyncMigrator.Vsts.Contexts;
 
 namespace VstsSyncMigrator.Engine
 {

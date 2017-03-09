@@ -15,6 +15,7 @@ using System.Net;
 using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
 using VstsSyncMigrator.Engine.Configuration.Processing;
+using VstsSyncMigrator.Vsts.Contexts;
 
 namespace VstsSyncMigrator.Engine
 {

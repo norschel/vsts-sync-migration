@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using VstsSyncMigrator.Engine.Configuration.Processing;
 using VstsSyncMigrator.Engine.Execution.Exceptions;
+using VstsSyncMigrator.Vsts.Contexts;
 
 namespace VstsSyncMigrator.Engine
 {

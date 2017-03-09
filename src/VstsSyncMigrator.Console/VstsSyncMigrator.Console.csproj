@@ -243,6 +243,10 @@
       <Project>{68baf6ba-2bc0-48d0-b892-1d9f93d7003a}</Project>
       <Name>VstsSyncMigrator.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VstsSyncMigrator\VstsSyncMigrator.csproj">
+      <Project>{93c8484d-f219-42d3-a3bf-eb3df4c92397}</Project>
+      <Name>VstsSyncMigrator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
