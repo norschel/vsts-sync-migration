@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.25909.2
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VstsSyncMigrator.Console", "src\VstsSyncMigrator.Console\VstsSyncMigrator.Console.csproj", "{033EB332-4A50-4C73-9B7D-A35D9F3C0513}"
 EndProject
@@ -61,6 +61,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VstsSyncMigrator", "src\VstsSyncMigrator\VstsSyncMigrator.csproj", "{93C8484D-F219-42D3-A3BF-EB3DF4C92397}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VstsSyncMigrator.Store", "src\VstsSyncMigrator.Store\VstsSyncMigrator.Store.csproj", "{90D8E7EF-7BD5-4802-98F9-02D6D17E0F04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine2", "Engine2", "{A564298E-D616-40B7-84A4-4F309BE0730F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VstsSyncMigrator.Vsts", "src\VstsSyncMigrator.Vsts\VstsSyncMigrator.Vsts.csproj", "{0458D700-603C-4CB0-9022-3506E0D724B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VstsSyncMigrator.Vsts.Tests", "src\VstsSyncMigrator.Vsts.Tests\VstsSyncMigrator.Vsts.Tests.csproj", "{9786267B-740A-4A04-A972-3786D7A72F7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +93,22 @@ Global
 		{985259EA-C475-4918-9342-50AB744F52AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{985259EA-C475-4918-9342-50AB744F52AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{985259EA-C475-4918-9342-50AB744F52AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93C8484D-F219-42D3-A3BF-EB3DF4C92397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93C8484D-F219-42D3-A3BF-EB3DF4C92397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93C8484D-F219-42D3-A3BF-EB3DF4C92397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93C8484D-F219-42D3-A3BF-EB3DF4C92397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D8E7EF-7BD5-4802-98F9-02D6D17E0F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D8E7EF-7BD5-4802-98F9-02D6D17E0F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D8E7EF-7BD5-4802-98F9-02D6D17E0F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D8E7EF-7BD5-4802-98F9-02D6D17E0F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0458D700-603C-4CB0-9022-3506E0D724B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0458D700-603C-4CB0-9022-3506E0D724B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0458D700-603C-4CB0-9022-3506E0D724B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0458D700-603C-4CB0-9022-3506E0D724B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9786267B-740A-4A04-A972-3786D7A72F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9786267B-740A-4A04-A972-3786D7A72F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9786267B-740A-4A04-A972-3786D7A72F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9786267B-740A-4A04-A972-3786D7A72F7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +122,10 @@ Global
 		{4D45177B-5CEA-406F-8C35-2125278BACA0} = {FA574C5F-498D-4C1B-BA57-FC28E534C6B6}
 		{243265E4-0E5A-4E95-BE7C-B92B7666FF79} = {FA574C5F-498D-4C1B-BA57-FC28E534C6B6}
 		{7EE17369-DAA1-4D40-BA15-2E41D418B895} = {2BC0808B-6F4D-4635-82FE-1118181DD64F}
+		{93C8484D-F219-42D3-A3BF-EB3DF4C92397} = {A564298E-D616-40B7-84A4-4F309BE0730F}
+		{90D8E7EF-7BD5-4802-98F9-02D6D17E0F04} = {A564298E-D616-40B7-84A4-4F309BE0730F}
+		{0458D700-603C-4CB0-9022-3506E0D724B1} = {A564298E-D616-40B7-84A4-4F309BE0730F}
+		{9786267B-740A-4A04-A972-3786D7A72F7A} = {A564298E-D616-40B7-84A4-4F309BE0730F}
 	EndGlobalSection
 	GlobalSection(CodealikeProperties) = postSolution
 		SolutionGuid = 51c92075-0694-476b-8366-efd65c9a9b77
