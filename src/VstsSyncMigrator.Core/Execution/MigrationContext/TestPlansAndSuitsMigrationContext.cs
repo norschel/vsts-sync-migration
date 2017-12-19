@@ -568,6 +568,7 @@ namespace VstsSyncMigrator.Engine
             }
             catch (Exception e)
             {
+                Trace.WriteLine("Error happend in target testplan {0}",targetSuitChild.Plan.Name);
                 FixIterationNotFound(e, source, targetSuitChild, targetTestStore);
             }
         }
@@ -582,7 +583,7 @@ namespace VstsSyncMigrator.Engine
                 missingIterationPath = missingIterationPath.Substring(missingIterationPath.IndexOf(@"\") + 1, missingIterationPath.Length - missingIterationPath.IndexOf(@"\") - 2);
 
                 Trace.WriteLine("Found a orphaned iteration path in test suite query.");
-                Trace.WriteLine(string.Format("Invalid iteration path {0}:", missingIterationPath));
+                Trace.WriteLine(string.Format("Invalid iteration path: {0}.", missingIterationPath));
                 Trace.WriteLine("Replacing the orphaned iteration path from query with root iteration path. Please fix the query after the migration.");
 
                 targetSuitChild.Query = targetSuitChild.Project.CreateTestQuery(
@@ -596,6 +597,8 @@ namespace VstsSyncMigrator.Engine
                         string.Format(@"'{0}\{1}'", targetTestStore.Project.TeamProjectName, missingIterationPath),
                         string.Format(@"'{0}'", targetTestStore.Project.TeamProjectName)
                     ));
+                Trace.WriteLine("New query: {0}", targetSuitChild.Query.QueryText);
+                Trace.WriteLine("Replacement of orphaned iteration path with root iteration finished.");
             }
         }
     }
