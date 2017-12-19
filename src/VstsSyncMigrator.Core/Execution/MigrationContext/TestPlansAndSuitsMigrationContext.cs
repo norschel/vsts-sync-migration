@@ -233,10 +233,7 @@ namespace VstsSyncMigrator.Engine
                         else
                         {
                             Trace.WriteLine("Fixing [System.Id] in query in test suite '" + dynamic.Title + "' from " + qid + " to " + targetWi.Id, Name);
-                            dynamic.Refresh();
-                            dynamic.Repopulate();
                             dynamic.Query = targetTestStore.Project.CreateTestQuery(dynamic.Query.QueryText.Replace(match.Value, string.Format("[System.Id] = {0}", targetWi.Id)));
-                            targetPlan.Save();
                         }
                     }
                 }
@@ -522,6 +519,7 @@ namespace VstsSyncMigrator.Engine
             // Postprocessing common errors
             FixQueryForTeamProjectNameChange(source, targetSuitChild, targetTestStore);
             FixWorkItemIdInQuery(targetSuitChild);
+            ValidateAndFixTestSuiteQuery(source, targetSuitChild, targetTestStore);
         }
 
         private void FixQueryForTeamProjectNameChange(ITestSuiteBase source, IDynamicTestSuite targetSuitChild,
@@ -555,9 +553,6 @@ namespace VstsSyncMigrator.Engine
                         string.Format(@"'{0}'", targetTestStore.Project.TeamProjectName)
                     ));
 
-                ValidateAndFixTestSuiteQuery(source, targetSuitChild, targetTestStore);
-
-                targetSuitChild.Repopulate();
                 Trace.WriteLine(string.Format("New query is now {0}", targetSuitChild.Query.QueryText));
             }
         }
@@ -574,10 +569,6 @@ namespace VstsSyncMigrator.Engine
             catch (Exception e)
             {
                 FixIterationNotFound(e, source, targetSuitChild, targetTestStore);
-            }
-            finally
-            {
-                targetSuitChild.Repopulate();
             }
         }
 
